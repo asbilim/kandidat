@@ -1,0 +1,10 @@
+1-créer un environnement virtuel
+2-activer l'environnement virtuel
+3-installer les packages avec la commange pip install -r requiements.txt
+4-connaitre son adresse ip , lancer le serveur sur cette adresse avec adresse:8000 
+exemple mon adresse c'est 192.168.100.63 , je vais donc faire
+-ifconfig (pour avoir mon ip)
+-python manage.py runserver 192.168.100.63:8000 
+5-aller dans les fichiers html et dans les requetes fetch remplacer par l'adresse du serveur
+
+---en cas de problème recontacter moi pour une reunion zoom--
