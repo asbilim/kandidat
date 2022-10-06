@@ -29,7 +29,7 @@
                 </li>
                 {% endfor %}
             </ul>
-
+            <a   href="{% url 'kandidat-delete-all' %}" class="mx-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl leading-none px-3 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete All</a>
              <!-- fin liste des candidats -->
         </div>
         <!-- user profile -->
@@ -39,7 +39,13 @@
                         <img class="w-10 h-10 rounded-full" src="{% static 'kandidat/images/gamer.png' %}" alt="Jese Leos">
                     </a>
                     <div>
-                        <a   href="{% url 'kandidat-update' single.id %}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl leading-none px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+                        {% if current == False %}
+                            <a   href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl leading-none px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+                            <a   href="#" class="mx-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl leading-none px-3 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete</a>
+                        {% else %}
+                            <a   href="{% url 'kandidat-update' single.id %}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xl leading-none px-3 py-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Edit</a>
+                            <a   href="{% url 'kandidat-delete' single.id %}" class="mx-2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-xl leading-none px-3 py-1.5 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete</a>
+                        {% endif %}
                     </div>
                 </div>
                 <p class="text-base text-2xl font-semibold leading-none text-gray-900 dark:text-white">

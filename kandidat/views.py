@@ -117,7 +117,23 @@ def kandidat_all(request,id):
 def kandidat_home(request):
 
     candidats = Kandidat.objects.all()
-
-    id = Kandidat.objects.first().id
+    try:
+        id = Kandidat.objects.first().id
+    except AttributeError:
+        return render(request,'kandidat/kandidat-all.html',{"current":False,"candidats":[],"single":[],"id":1})
     single = id = Kandidat.objects.first()
     return render(request,'kandidat/kandidat-all.html',{'current':'all',"id":id,"candidats":candidats,"single":single})
+
+def kandidat_delete(request,id):
+
+    try:
+        Kandidat.objects.filter(id=id).delete()
+        return redirect('kandidat-home')
+    except Kandidat.DoesNotExist:
+        return redirect('kandidat-home')
+
+def kandidat_delete_all(request):
+
+    delete = Kandidat.objects.all().delete()
+
+    return redirect("kandidat-home")

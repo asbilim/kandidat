@@ -15,17 +15,17 @@
                     <div class="mb-6">
                         <label for="first-name" class="block mb-2 text-xl font-normal text-gray-900 dark:text-gray-300">Your First Name</label>
                         <input type="text" id="firstname" minlength="5" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 peer peer-invalid:border-1 peer-invalid:border-red-500 peer-invalid:ring-1 peer-invalid:ring-red-500" placeholder="first name" required="">
-                        <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect name</p>
+                        <!-- <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect name</p> -->
                     </div>
                     <div class="mb-6">
                         <label for="lastname" class="block mb-2 text-xl font-normal text-gray-900 dark:text-gray-300">Your Last Name</label>
                         <input type="text" id="lastname" minlength=""5 class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2 peer peer-invalid:border-1 peer-invalid:border-red-500 peer-invalid:ring-1 peer-invalid:ring-red-500" placeholder="Last Name" required="">
-                        <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect last name</p>
+                        <!-- <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect last name</p> -->
                     </div>
                     <div class="mb-6">
                         <label for="email" class="block mb-2 text-xl font-normal text-gray-900 dark:text-gray-300">Your email</label>
                         <input type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2 peer peer-invalid:border-1 peer-invalid:border-red-500 peer-invalid:ring-1 peer-invalid:ring-red-500" placeholder="name@example.com" required="">
-                        <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect email</p>
+                        <!-- <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect email</p> -->
                     </div>
                     <div class="flex items-center jutify-start py-4 gap-4">
                         <div class="flex items-center pl-4 rounded ">
@@ -40,7 +40,7 @@
                     <div class="mb-6">
                         <label for="phone" class="block mb-2 text-xl font-normal text-gray-900 dark:text-gray-300 ">Your Phone</label>
                         <input type="text" minlength="7" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2 peer peer-invalid:border-1 peer-invalid:border-red-500 peer-invalid:ring-1 peer-invalid:ring-red-500" placeholder="+4958648996" required="">
-                        <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect phone number</p>
+                        <!-- <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect phone number</p> -->
                     </div>
                     <div class="flex items-center my-6,justify-center">
                         <div class="flex items-center h-5">
@@ -140,10 +140,10 @@
                 closeModal('secondmodal');
             })
             $('#p-home').on('click',(e)=>{
-                document.location.replace("{% url 'kandidat-all' 1 %}")
+                document.location.replace("{% url 'kandidat-home'  %}")
             })
             $('#s-home').on('click',(e)=>{
-                document.location.replace("{% url 'kandidat-all' 1 %}")
+                document.location.replace("{% url 'kandidat-home'  %}")
             })
 
             //fin gerer les modales
@@ -200,8 +200,9 @@
             }
 
             const sendData = async (data)=>{
+            
 
-                 fetch("http://192.168.100.169:8000/api/kandidaten",{
+                 fetch("http://192.168.43.121:8000/api/kandidaten",{
                     method: 'POST',
                     headers:{
                         "content-type": "application/json",
@@ -229,11 +230,14 @@
                     console.log(data)
                  })
             }
+            // disabling the input validations
 
-            $('#form').on('change',()=>{
-                data = collectData();
-                verifyData(data);
-            })
+            // $('#form').on('change',()=>{
+            //     data = collectData();
+            //     verifyData(data);
+            // })
+
+            // disabling the input validations
 
             $('#submit').on('click',(e)=>{
                 e.preventDefault();
