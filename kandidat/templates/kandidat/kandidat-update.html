@@ -222,7 +222,7 @@
 
             const sendData = async (data)=>{
 
-                 fetch("http://192.168.43.121:8000/api/kandidaten/{{candidat.id}}",{
+                 fetch("http://192.168.43.121:8001/api/kandidaten/{{candidat.id}}",{
                     method: 'PUT',
                     headers:{
                         "content-type": "application/json",
@@ -232,14 +232,11 @@
                  })
                  .then(data=>{
                     if (data.status === 201 || data.status === 200){
-                        $('#modal').removeClass('hidden');
-                        $('#modal').addClass('fixed');
-                        console.log(rest.status)
+                        document.location.replace("{% url 'kandidat-home' %}")
                         return rest
                     }
                     else{
-                        $('#secondmodal').removeClass('hidden');
-                        $('#secondmodal').addClass('fixed');
+                        document.location.reload();
                         console.log(rest.status)
                     }
 
