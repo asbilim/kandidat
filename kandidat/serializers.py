@@ -11,4 +11,4 @@ class KandidatSerializer(serializers.ModelSerializer):
                   'geschlecht',
                   'email',
                   'Nummer',
-                  'ist_erwachsene')
+                  'ist_erwachsene',"Beschreibung")

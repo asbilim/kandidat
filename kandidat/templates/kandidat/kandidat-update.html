@@ -54,7 +54,10 @@
                     <div class="mb-6">
                         <label for="phone" class="block mb-2 text-xl font-normal text-gray-900 dark:text-gray-300 ">Your Phone</label>
                         <input value="{{candidat.Nummer}}" type="text" minlength="7" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2 peer peer-invalid:border-1 peer-invalid:border-red-500 peer-invalid:ring-1 peer-invalid:ring-red-500" placeholder="+4958648996" required="">
-                        <p class="hidden text-xl font-semiblod italic text-red-500 peer-invalid:block">incorrect phone number</p>
+                    </div>
+                    <div class="mb-6">
+                        <label for="phone" class="block mb-2 text-xl font-normal text-gray-900 dark:text-gray-300 ">Description</label>
+                        <textarea  type="text" minlength="7" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:ring-2 peer peer-invalid:border-1 peer-invalid:border-red-500 peer-invalid:ring-1 peer-invalid:ring-red-500" placeholder="this user likes..." required="">{{candidat.Beschreibung}}</textarea>
                     </div>
                     <div class="flex items-center my-6,justify-center">
                         {% if candidat.ist_erwachsene %}
@@ -176,8 +179,9 @@
                 let phone = $('#phone').val()
                 let is_adult = $('#adult:checked').val() === undefined ? false : true
                 let sex = $('.sex:checked').val()
+                let description = $('#description').val()
 
-                const data = {"firstname":firstname,"lastname":lastname,"email":email,"phone":phone,"adult":is_adult,"sex":sex}
+                const data = {"firstname":firstname,"lastname":lastname,"email":email,"phone":phone,"adult":is_adult,"sex":sex,"description":description}
 
                 return data;
             }
@@ -228,7 +232,7 @@
                         "content-type": "application/json",
                         "X-CSRFToken":getCookie("csrftoken")
                     },
-                    body: JSON.stringify({'Vorname':data.firstname,'Nachname':data.lastname,'geschlecht':data.sex,'email':data.email,'Nummer':data.phone,'ist_erwachsene':data.adult})
+                    body: JSON.stringify({'Vorname':data.firstname,'Nachname':data.lastname,'geschlecht':data.sex,'email':data.email,'Nummer':data.phone,'ist_erwachsene':data.adult,"Beschreibung":data.description})
                  })
                  .then(data=>{
                     if (data.status === 201 || data.status === 200){
@@ -247,11 +251,6 @@
                     console.log(data)
                  })
             }
-
-            $('#form').on('change',()=>{
-                data = collectData();
-                verifyData(data);
-            })
 
             $('#submit').on('click',(e)=>{
                 e.preventDefault();

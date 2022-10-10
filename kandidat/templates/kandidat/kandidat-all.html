@@ -21,8 +21,11 @@
                           <p class="text-xl font-medium text-gray-900 truncate dark:text-white">
                             <a href="{% url 'kandidat-all' item.id %}">{{item.Vorname}}</a>
                           </p>
-                          <p class="text-xl text-gray-500 truncate dark:text-gray-400">
+                          <p class="text-xl text-gray-700 truncate dark:text-gray-400">
                             {{item.email}}
+                          </p>
+                          <p class="text-lg text-gray-500 truncate dark:text-gray-400">
+                            {{item.Beschreibung}}
                           </p>
                        </div>
                     </div>
@@ -74,6 +77,9 @@
                         </a>
                     </li>
                 </ul>
+                <p class="mb-3 text-sm font-normal max-w-xl">
+                    <a href="#" class="hover:underline">Description:<span class="text-slate-900 font-semibold">{{single.Beschreibung}}</span></a>
+                </p>
             </div>
 
         <!-- end user profile -->
